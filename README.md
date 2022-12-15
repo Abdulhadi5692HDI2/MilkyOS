@@ -3,7 +3,7 @@ A **hobby** OS. :)
 64-bit only.
 ## TODO
 
-* Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled.
+X Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled. (completed 15/12/2022 19:51)
 * Write a physical memory allocator, a good starting point is a bitmap allocator.
 * Write a virtual memory manager that can map, remap and unmap pages.
 * Begin parsing ACPI tables, the most important one is the MADT since it contains information about the APIC.
@@ -17,3 +17,4 @@ A **hobby** OS. :)
 * Get a userland going by loading executables from your VFS and running them in ring 3. Set up a way to perform system calls.
 * Write a PCI driver.
 * Add support for a storage medium, the easiest and most common ones are AHCI and NVMe.
+ 
