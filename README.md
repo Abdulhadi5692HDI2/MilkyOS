@@ -1,9 +1,7 @@
 # MilkyOS
 A **hobby** OS. :)
+64-bit only.
 ## TODO
-
-You may be asking yourself: "what now?".  So here's a list of things you may want to do to get started working
-on your new kernel:
 
 * Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled.
 * Write a physical memory allocator, a good starting point is a bitmap allocator.
