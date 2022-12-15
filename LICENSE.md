@@ -1,5 +1,4 @@
-(limine bootloader) Copyright 2020, 2021 mintsuki and contributors.
-(milkyos) Copyright 2022 Abdulhadi5692HDI2.
+Copyright 2022 Abdulhadi5692HDI2.
 
 Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted.
 
