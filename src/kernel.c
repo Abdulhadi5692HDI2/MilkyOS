@@ -1,7 +1,8 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "limine.h"
-#include "idt.h"
+#include "misc/misc.h"
+#include "idt/idt.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -20,24 +21,33 @@ static void done(void) {
 
 //extern void newline();
 
+void scrprint(const char *msg, ...) {
+	struct limine_terminal *terminal = terminal_request.response->terminals[0];
+	if (msg == '\n') {
+		terminal->rows++;
+		terminal_request.response->write(terminal, msg, strlen(msg)); // libc-less strlen implementation in strlen.c
+		terminal->columns = 0;
+	} else {
+		terminal_request.response->write(terminal, msg, strlen(msg)); // libc-less strlen implementation in strlen.c
+	}
+}
+
 void init() {
 	// Ensure we got a terminal
     if (terminal_request.response == NULL
      || terminal_request.response->terminal_count < 1) {
         done();
 	}
+	scrprint("[ OK ] Loaded string functions from misc.h!\n");
 	idt_init();
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	terminal_request.response->write(terminal, "[INFO] IDT Loaded successfully", 11);
+	scrprint("[ OK ] IDT Loaded!\n");
+	scrprint("[ PENDING ] Starting main kernel!\n");
 	
 }
 
 // The following will be our kernel's entry point.
 void _start(void) {
-    //init();
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	terminal_request.response->write(terminal, "Hello World", 11);
-	//newline();
-	terminal_request.response->write(terminal, "Hello Again", 11);
-    done();
+	init();
+    scrprint("MilkyOS version 1.0");
+	done();
 }

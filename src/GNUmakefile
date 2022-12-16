@@ -59,7 +59,7 @@ override LDFLAGS +=         \
     -static                 \
     -m elf_x86_64           \
     -z max-page-size=0x1000 \
-    -T linker.ld
+    -T source.ld
 
 # Check if the linker supports -no-pie and enable it if it does
 ifeq ($(shell $(LD) --help 2>&1 | grep 'no-pie' >/dev/null 2>&1; echo $$?),0)

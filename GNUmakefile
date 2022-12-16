@@ -34,7 +34,7 @@ src:
 
 milkyos.iso: limine src
 	cp src/mkernel.sys \
-		limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin iso_root/
+		config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin iso_root/
 	xorriso -as mkisofs -b limine-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot limine-cd-efi.bin \
@@ -52,7 +52,7 @@ milkyos.hdd: limine src
 	sudo mkfs.fat -F 32 `cat loopback_dev`p1
 	sudo mount `cat loopback_dev`p1 img_mount
 	sudo mkdir -p img_mount/EFI/BOOT
-	sudo cp -v src/msrc limine.cfg limine/limine.sys img_mount/
+	sudo cp -v src/mkernel.sys config/limine.cfg limine/limine.sys img_mount/
 	sudo cp -v limine/BOOTX64.EFI img_mount/EFI/BOOT/
 	sync
 	sudo umount img_mount
