@@ -18,21 +18,26 @@ static void done(void) {
     }
 }
 
+//extern void newline();
+
 void init() {
-	idt_init();
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	terminal_request.response->write(terminal, "[INFO] IDT Loaded successfully\n", 11);
-	
-}
-// The following will be our kernel's entry point.
-void _start(void) {
 	// Ensure we got a terminal
     if (terminal_request.response == NULL
      || terminal_request.response->terminal_count < 1) {
         done();
 	}
-    init();
+	idt_init();
 	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	//terminal_request.response->write(terminal, "kernel: Hello World!", 11);
+	terminal_request.response->write(terminal, "[INFO] IDT Loaded successfully", 11);
+	
+}
+
+// The following will be our kernel's entry point.
+void _start(void) {
+    //init();
+	struct limine_terminal *terminal = terminal_request.response->terminals[0];
+	terminal_request.response->write(terminal, "Hello World", 11);
+	//newline();
+	terminal_request.response->write(terminal, "Hello Again", 11);
     done();
 }
