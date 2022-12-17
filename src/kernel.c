@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stddef.h>
+#include "drivers/test.h"
 #include "limine.h"
 #include "misc/misc.h"
 #include "idt/idt.h"
@@ -45,6 +46,8 @@ void init() {
 	//setPaging();
 	//scrprint("[ OK ] Enabled Paging!\n");
 	scrprint("[ ERROR ] Could not enable Paging! System starting without paging!\n");
+	testInit();
+	scrprint("[ OK ] Loaded drivers!\n");
 	scrprint("[ PENDING ] Starting main kernel!\n");
 	
 }
