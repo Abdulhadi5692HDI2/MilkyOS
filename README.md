@@ -1,6 +1,14 @@
 # MilkyOS
 A **hobby** OS. :)
 64-bit only.
+
+## Compile instructions
+1. Clone this repo
+2. Create a directory named `iso_root`
+3. Run `make # (or gmake)`
+4. You will have a ISO file named `milkyos.iso`
+5. Type `make distclean` to clean everything
+
 ## TODO
 
 X Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled. (completed 15/12/2022 19:51)
