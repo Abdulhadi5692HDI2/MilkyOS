@@ -46,7 +46,7 @@ void init() {
 	//setPaging();
 	//scrprint("[ OK ] Enabled Paging!\n");
 	scrprint("[ ERROR ] Could not enable Paging! System starting without paging!\n");
-	testInit();
+	testInit(); // the test driver. (smallest driver possible in MilkyOS)
 	scrprint("[ OK ] Loaded drivers!\n");
 	scrprint("[ PENDING ] Starting main kernel!\n");
 	
