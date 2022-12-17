@@ -3,6 +3,7 @@
 #include "limine.h"
 #include "misc/misc.h"
 #include "idt/idt.h"
+#include "mem/paging/paging.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -41,6 +42,9 @@ void init() {
 	scrprint("[ OK ] Loaded string functions from misc.h!\n");
 	idt_init();
 	scrprint("[ OK ] IDT Loaded!\n");
+	//setPaging();
+	//scrprint("[ OK ] Enabled Paging!\n");
+	scrprint("[ ERROR ] Could not enable Paging! System starting without paging!\n");
 	scrprint("[ PENDING ] Starting main kernel!\n");
 	
 }
