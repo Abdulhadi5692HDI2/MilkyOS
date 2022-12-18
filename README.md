@@ -16,7 +16,7 @@ X Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that excep
 * Write a virtual memory manager that can map, remap and unmap pages.
 * Begin parsing ACPI tables, the most important one is the MADT since it contains information about the APIC.
 * Start up the other CPUs. Limine provides a facility to make this less painful.
-* Set up an interrupt controller such as the APIC.
+X Set up an interrupt controller such as the APIC. (completed 18/12/2022 17:06)
 * Configure a timer such as the Local APIC timer, the PIT, or the HPET.
 * Implement a scheduler to schedule threads in order make multitasking possible.
 * Design a virtual file system (VFS) and implement it. The traditional UNIX VFS works and saves headaches when porting software, but you can make your own thing too.
