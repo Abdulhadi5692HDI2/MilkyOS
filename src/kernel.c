@@ -1,10 +1,12 @@
 #include <stdint.h>
 #include <stddef.h>
-#include "drivers/test.h"
-#include "limine.h"
+#include "drivers/test/test.h"
+#include "boot/limine.h"
 #include "misc/misc.h"
 #include "idt/idt.h"
 #include "mem/paging/paging.h"
+#include "panic.h"
+#include "hardware/pic.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -48,13 +50,24 @@ void init() {
 	scrprint("[ ERROR ] Could not enable Paging! System starting without paging!\n");
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
 	scrprint("[ OK ] Loaded drivers!\n");
+	PIC_remap(0x20, 0x28);
+	scrprint("[ OK ] Configured and remapped the PIC.\n");
 	scrprint("[ PENDING ] Starting main kernel!\n");
 	
 }
 
+
+
+#define VER "1.00-dev"
+#define NAME "MilkyOS"
 // The following will be our kernel's entry point.
 void _start(void) {
 	init();
-    scrprint("MilkyOS version 1.0");
+	
+	scrprint(NAME);
+	scrprint("\n");
+	scrprint("The version your running is: ");
+	scrprint(VER);
+	//panic("A unknown error has happened.", "kernel");
 	done();
 }

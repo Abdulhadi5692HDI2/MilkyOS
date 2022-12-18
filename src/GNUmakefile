@@ -81,7 +81,7 @@ override HEADER_DEPS := $(CFILES:.c=.d) $(ASFILES:.S=.d)
 .PHONY: all
 all: $(KERNEL)
 
-limine.h:
+boot/limine.h:
 	curl https://raw.githubusercontent.com/limine-bootloader/limine/trunk/limine.h -o $@
 
 # Link rules for the final kernel executable.
