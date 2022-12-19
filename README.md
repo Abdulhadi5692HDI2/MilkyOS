@@ -35,3 +35,5 @@ X W̶r̶i̶t̶e̶ ̶a̶ ̶v̶i̶r̶t̶u̶a̶l̶ ̶a̶n̶d̶ ̶p̶h̶y̶s̶i̶c̶
 * Write a PCI driver.
 * Add support for a storage medium, the easiest and most common ones are AHCI and NVMe.
  
+## Known issues when booting in QEMU
+* No Graphical Output will show after the limine menu. (this can be temporarily fixed by **trying** to resize the emulator window)
