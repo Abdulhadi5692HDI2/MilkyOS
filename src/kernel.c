@@ -6,6 +6,7 @@
 #include "misc/misc.h"
 #include "idt/idt.h"
 #include "mem/paging/paging.h"
+#include "mem/mm/mm.h"
 #include "panic.h"
 #include "hardware/pic.h"
 
@@ -38,8 +39,7 @@ void scrprint(const char *msg, ...) {
 }
 
 void scrclear() {
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	terminal_request.response->write(terminal, "\033[2J", 999);
+	scrprint("\033[2J");
 	scrprint("\n");
 }
 void init() {
@@ -51,14 +51,10 @@ void init() {
 	scrprint("[ OK ] Loaded string functions from misc.h!\n");
 	idt_init();
 	scrprint("[ OK ] IDT Loaded!\n");
-	//setPaging();
-	//scrprint("[ OK ] Enabled Paging!\n");
-	scrprint("[ ERROR ] Could not enable Paging! System starting without paging!\n");
+	init_dynamic_mem();
+	scrprint("[ OK ] Initialized Dynamic Memory Management\n");
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
 	scrprint("[ OK ] Loaded drivers!\n");
-	//PIC_remap(0x20, 0x28);
-	//scrprint("[ OK ] Configured and remapped the PIC.\n");
-	scrprint("[ PENDING ] Starting main kernel!\n");
 	
 }
 
@@ -69,7 +65,7 @@ void init() {
 // The following will be our kernel's entry point.
 void _start(void) {
 	init();
-	scrprint("\033[2J");
-	scrprint("MilkyOS v1.00\n");
-	done();
+	scrprint(NAME);
+	scrprint(VER);
+	scrprint("\n");
 }
