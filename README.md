@@ -19,8 +19,10 @@ A **hobby** OS. :)
 ## TODO
 
 X Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled. (completed 15/12/2022 19:51)
-* Write a physical memory allocator, a good starting point is a bitmap allocator.
-* Write a virtual memory manager that can map, remap and unmap pages.
+
+X W̶r̶i̶t̶e̶ ̶a̶ ̶v̶i̶r̶t̶u̶a̶l̶ ̶a̶n̶d̶ ̶p̶h̶y̶s̶i̶c̶a̶l̶ ̶m̶e̶m̶o̶r̶y̶ ̶m̶a̶n̶a̶g̶e̶r̶ Write a dynamic memory manger (completed 19/12/2022 19:48)
+
+
 * Begin parsing ACPI tables, the most important one is the MADT since it contains information about the APIC.
 * Start up the other CPUs. Limine provides a facility to make this less painful.
 * Set up an interrupt controller such as the APIC.
