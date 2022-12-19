@@ -9,6 +9,13 @@ A **hobby** OS. :)
 4. You will have a ISO file named `milkyos.iso`
 5. Type `make distclean` to clean everything
 
+## Debug?
+1. You should've already cloned the repo
+2. Type `make debug`
+3. From  a another shell (local) type `gdb`
+4. now type `target remote localhost:1234`
+5. have fun i guess
+
 ## TODO
 
 X Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled. (completed 15/12/2022 19:51)
