@@ -22,15 +22,12 @@ A **hobby** OS. :)
 
 * [x] W̶r̶i̶t̶e̶ ̶a̶ ̶v̶i̶r̶t̶u̶a̶l̶ ̶a̶n̶d̶ ̶p̶h̶y̶s̶i̶c̶a̶l̶ ̶m̶e̶m̶o̶r̶y̶ ̶m̶a̶n̶a̶g̶e̶r̶ Write a dynamic memory manger (completed 19/12/2022 19:48)
 
-
-* [ ] Begin parsing ACPI tables, the most important one is the MADT since it contains information about the APIC.
-* [ ] Start up the other CPUs. Limine provides a facility to make this less painful.
-* [ ] Set up an interrupt controller such as the APIC.
-* [ ] Configure a timer such as the Local APIC timer, the PIT, or the HPET.
+* [x] Configure a timer such as the Local APIC timer, the PIT, or the HPET.
 * [ ] Implement a scheduler to schedule threads in order make multitasking possible.
 * [ ] Design a virtual file system (VFS) and implement it. The traditional UNIX VFS works and saves headaches when porting software, but you can make your own thing too.
 * [ ] Implement a simple virtual file system like a memory-only tmpfs to avoid crippling the design of your VFS too much while implementing it alongside real storage filesystems.
 * [ ] Decide how to abstract devices. UNIX likes usually go for a `/dev` virtual filesystem containing device nodes and use `ioctl()` alongside standard FS calls to do operations on them.
+
 * [ ] Get a userland going by loading executables from your VFS and running them in ring 3. Set up a way to perform system calls.
 * [ ] Write a PCI driver.
 * [ ] Add support for a storage medium, the easiest and most common ones are AHCI and NVMe.
