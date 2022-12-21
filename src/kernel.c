@@ -9,6 +9,7 @@
 #include "mem/mm/mm.h"
 #include "panic.h"
 #include "hardware/pic.h"
+#include "drivers/keyboard/keyboard.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -53,7 +54,10 @@ void init() {
 	scrprint("[ OK ] IDT Loaded!\n");
 	init_dynamic_mem();
 	scrprint("[ OK ] Initialized Dynamic Memory Management\n");
+	scrprint("test: ");
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
+	scrprint("keyboard: ");
+	kernelInitKeyboard();
 	scrprint("[ OK ] Loaded drivers!\n");
 	
 }
@@ -62,10 +66,21 @@ void init() {
 
 #define VER "1.00-dev"
 #define NAME "MilkyOS"
-// The following will be our kernel's entry point.
+
+
+// Main Kernel
 void _start(void) {
 	init();
 	scrprint(NAME);
 	scrprint(VER);
-	scrprint("\n");
+	/*
+	#define PS2_TEST_KEYBOARD
+	*/
+	#ifdef PS2_TEST_KEYBOARD
+	for (;;) {
+		initKeyboard();
+	}
+	#endif
+	done();
+	
 }

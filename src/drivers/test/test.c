@@ -9,6 +9,6 @@
 #define FAIL 1
 
 int testInit() {
-    scrprint("\nTest Driver loaded\n");
+    scrprint(" Test Driver loaded\n");
     return SUCCESS;
 }
