@@ -22,7 +22,7 @@ A **hobby** OS. :)
 
 * [x] W̶r̶i̶t̶e̶ ̶a̶ ̶v̶i̶r̶t̶u̶a̶l̶ ̶a̶n̶d̶ ̶p̶h̶y̶s̶i̶c̶a̶l̶ ̶m̶e̶m̶o̶r̶y̶ ̶m̶a̶n̶a̶g̶e̶r̶ Write a dynamic memory manger (completed 19/12/2022 19:48)
 
-* [x] Implement a interrupt controller (most common in osdev is `8259 PIC` )
+* [x] Implement a interrupt controller (most common in osdev is `8259 PIC` ) (completed 19/12/2022)
 * [x] Add a PS/2 Keyboard driver
 * [ ] Configure a timer such as the Local APIC timer, the PIT, or the HPET.
 * [ ] Implement a scheduler to schedule threads in order make multitasking possible.
