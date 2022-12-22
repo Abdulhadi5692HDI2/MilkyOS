@@ -2,6 +2,10 @@
 A **hobby** OS. :)
 64-bit only.
 
+## You probally should have
+* Everything that the BuildDepMilkyOS script has.
+
+
 ## Compile instructions
 1. Clone this repo
 2. Create a directory named `iso_root`
