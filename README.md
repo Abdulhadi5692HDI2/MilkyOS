@@ -3,7 +3,7 @@ A **hobby** OS. :)
 64-bit only.
 
 ## You probally should have
-* Everything that the BuildDepMilkyOS script has.
+* Everything that the BuildDepMilkyOS script installs.
 
 
 ## Compile instructions
