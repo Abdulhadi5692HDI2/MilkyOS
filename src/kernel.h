@@ -1,4 +1,4 @@
 #include <stdbool.h>
 
-void scrprint(const char *msg, ...);
-static void done(void);
+void scrprint(const char *fmt, ...);
+void scrclear();

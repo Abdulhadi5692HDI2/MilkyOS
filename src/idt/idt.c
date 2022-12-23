@@ -3,11 +3,13 @@
 #include <stddef.h>
 #include "../drivers/IO/osio.h"
 #include "../hardware/pic.h"
+#include "../panic.h"
 #include "idt.h"
 
 __attribute__((noreturn))
 void exception_handler(void);
 void exception_handler() {
+    panic2("A exception has happened!", "idt");
 	__asm__ volatile ("cli; hlt");
 }
 

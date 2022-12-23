@@ -20,29 +20,40 @@ static volatile struct limine_terminal_request terminal_request = {
     .revision = 0
 };
 
+// kernel done function
 static void done(void) {
     for (;;) {
         __asm__("hlt");
     }
 }
 
-//extern void newline();
-
-void scrprint(const char *msg, ...) {
+// a print function
+void scrprint(const char *fmt) {
 	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	if (msg == '\n') {
+	if (fmt == '\n') {
 		terminal->rows++;
-		terminal_request.response->write(terminal, msg, strlen(msg)); // libc-less strlen implementation in strlen.c
+		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
 		terminal->columns = 0;
 	} else {
-		terminal_request.response->write(terminal, msg, strlen(msg)); // libc-less strlen implementation in strlen.c
+		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
 	}
 }
 
+// a clean screen function
 void scrclear() {
 	scrprint("\033[2J");
 	scrprint("\n");
 }
+
+// cursor functions
+void cursor_forward() {
+	scrprint(" ");
+}
+void cursor_backward() {
+	scrprint("\b");
+}
+
+// initalize function
 void init() {
 	// Ensure we got a terminal
     if (terminal_request.response == NULL
@@ -63,16 +74,22 @@ void init() {
 }
 
 
-
+// some stuff
 #define VER "1.00-dev"
 #define NAME "MilkyOS"
 
 
 // Main Kernel
 void _start(void) {
+	// call the init function
 	init();
+
+	// just print some stuff
 	scrprint(NAME);
+	scrprint("\n");
 	scrprint(VER);
+
+	// keyboard test
 	/*
 	#define PS2_TEST_KEYBOARD
 	*/
@@ -81,6 +98,8 @@ void _start(void) {
 		initKeyboard();
 	}
 	#endif
+
+	// call the done function
 	done();
 	
 }
