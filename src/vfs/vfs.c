@@ -11,10 +11,10 @@ void read(struct file f1) {
     } else if (f1.data == "")
     {
         scrprint("\nread: error: File data not found!");
-    } else if (f1.size == 0)
+    } /*else if (f1.size == 0)
     {
         scrprint("\nread: error: File size not defined!");
-    }
+    }*/
     
     
     scrprint("\n");

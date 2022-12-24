@@ -86,7 +86,7 @@ void init() {
 
 
 // some stuff
-#define VER "1.00-dev"
+#define VER "1.01-dev git"
 #define NAME "MilkyOS"
 
 
@@ -96,9 +96,11 @@ void _start(void) {
 	init();
 
 	// just print some stuff
+	scrprint("Welcome to ");
 	scrprint(NAME);
-	scrprint("\n");
+	scrprint("\nKernel Version: ");
 	scrprint(VER);
+	scrprint("\n");
 
 	// keyboard test
 	/*
