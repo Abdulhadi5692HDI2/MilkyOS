@@ -12,6 +12,10 @@
 #include "drivers/keyboard/keyboard.h"
 #include "vfs/vfs.h"
 
+#define SCREEN_WIDTH 768
+#define SCREEN_HEIGHT 1024
+
+
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
 // be made volatile or equivalent.
@@ -37,6 +41,10 @@ void scrprint(const char *fmt) {
 		terminal->columns = 0;
 	} else {
 		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
+	}
+	if (terminal->rows == SCREEN_WIDTH) {
+		terminal->rows - 1;
+		terminal->columns = 0;
 	}
 }
 
@@ -71,6 +79,8 @@ void init() {
 	scrprint("keyboard: ");
 	kernelInitKeyboard();
 	scrprint("[ OK ] Loaded drivers!\n");
+	init_vfs();
+	scrprint("\n[ OK ] Initalized a virtual file system!\n");
 	
 }
 
@@ -99,13 +109,15 @@ void _start(void) {
 		initKeyboard();
 	}
 	#endif
-	struct file test;
-	test.path = "test.txt";
-	test.size = strlen(test.path);
-	test.data = "";
 
-	write(test, "Hello World!");
-	read(test);
+	// vfs api
+
+	struct file hello;
+	hello.path = "document.txt";
+	write(hello, "Hello World!");
+	read(hello);
+	close(hello);
+
 	// call the done function
 	done();
 	
