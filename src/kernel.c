@@ -10,6 +10,7 @@
 #include "panic.h"
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
+#include "vfs/vfs.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -98,7 +99,13 @@ void _start(void) {
 		initKeyboard();
 	}
 	#endif
+	struct file test;
+	test.path = "test.txt";
+	test.size = strlen(test.path);
+	test.data = "";
 
+	write(test, "Hello World!");
+	read(test);
 	// call the done function
 	done();
 	

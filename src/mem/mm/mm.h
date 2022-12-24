@@ -1,3 +1,5 @@
+#ifndef _MM_H
+#define _MM_H
 #include <stddef.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -26,3 +28,4 @@ void *merge_next_node_into_current(dynamic_mem_node_t *current_mem_node);
 void *merge_current_node_into_previous(dynamic_mem_node_t *current_mem_node);
 void cm(const char *string);
 int re(int op);
+#endif

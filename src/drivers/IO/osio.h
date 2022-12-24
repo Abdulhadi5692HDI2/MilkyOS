@@ -1,3 +1,5 @@
+#ifndef _OSIO_H
+#define _OSIO_H
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
@@ -20,3 +22,4 @@ static inline void io_wait(void)
 {
     outb(0x80, 0);
 }
+#endif
