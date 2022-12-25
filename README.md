@@ -1,6 +1,8 @@
 # MilkyOS
+https://img.shields.io/tokei/lines/github/Abdulhadi5692HDI2/MilkyOS
 A **hobby** OS. :)
 64-bit only.
+
 
 ## You probally should have
 * Everything that the BuildDepMilkyOS script installs.
