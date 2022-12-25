@@ -1,5 +1,8 @@
 # MilkyOS
+![GitHub last commit](https://img.shields.io/github/last-commit/Abdulhadi5692HDI2/MilkyOS)
 <img src="https://img.shields.io/tokei/lines/github/Abdulhadi5692HDI2/MilkyOS" />
+
+
 A **hobby** OS. :)
 64-bit only.
 
