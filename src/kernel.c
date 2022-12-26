@@ -86,7 +86,7 @@ void init() {
 
 
 // some stuff
-#define VER "1.01-dev git"
+#define VER "1.01-dev git patch"
 #define NAME "MilkyOS"
 
 
@@ -115,11 +115,10 @@ void _start(void) {
 	// vfs api
 
 	struct file hello;
-	hello.path = "document.txt";
-	write(hello, "Hello World!");
+	hello.path = "hello.txt";
+	hello.data = "Hello World!";
+	hello.size = strlen(hello.data);
 	read(hello);
-	close(hello);
-
 	// call the done function
 	done();
 	

@@ -5,14 +5,11 @@
 #include <stddef.h>
 
 
-#define CLOSED true
-
 struct file
 {
     char* path;
     char* data;
     size_t size;
-    bool close;
 };
 
 
@@ -20,7 +17,5 @@ struct file
 void init_vfs();
 
 void read(struct file f1);
-void write(struct file f2, const char* data2);
 void delete(struct file f3);
-void close(struct file f4);
 #endif
