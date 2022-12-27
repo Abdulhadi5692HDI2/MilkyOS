@@ -19,7 +19,7 @@ A **hobby** OS. :)
 5. Type `make distclean` to clean everything
 
 ## Debug?
-1. You should've already cloned the repo
+1. You should've already followed <a href="#compile-instructions">compile instructions</a>
 2. Type `make debug`
 3. From  a another shell (local) type `gdb`
 4. now type `target remote localhost:1234`
@@ -43,8 +43,10 @@ A **hobby** OS. :)
 * [ ] Write a PCI driver.
 * [ ] Add support for a storage medium, the easiest and most common ones are AHCI and NVMe.
  
-## Known issues when booting in QEMU
+## Known issues when booting in QEMU (fixed permanently)
 * No Graphical Output will show after the limine menu. (this can be temporarily fixed by **trying** to resize the emulator window)
 
-## Known issues with UEFI (well atleast OVMF-x64)
+## Known issues with UEFI  (well atleast OVMF-x64)
+
+**UPDATE: MilkyOS is no longer compatable with UEFI. (sure it can be booted with issues)**
 * The PS/2 Keyboard won't work at all. No matter how many code changes you make to the keyboard driver.
