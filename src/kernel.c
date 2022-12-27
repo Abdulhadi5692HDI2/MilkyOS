@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stddef.h>
+#include "kernel.h"
 #include "drivers/test/test.h"
 #include "drivers/IO/osio.h"
 #include "boot/limine.h"
@@ -11,10 +12,6 @@
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
 #include "vfs/vfs.h"
-
-#define SCREEN_WIDTH 768
-#define SCREEN_HEIGHT 1024
-
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -84,12 +81,6 @@ void init() {
 	
 }
 
-
-// some stuff
-#define VER "1.01-dev git patch"
-#define NAME "MilkyOS"
-
-
 // Main Kernel
 void _start(void) {
 	// call the init function
@@ -103,22 +94,11 @@ void _start(void) {
 	scrprint("\n");
 
 	// keyboard test
-	/*
-	#define PS2_TEST_KEYBOARD
-	*/
 	#ifdef PS2_TEST_KEYBOARD
 	for (;;) {
 		initKeyboard();
 	}
 	#endif
-
-	// vfs api
-
-	struct file hello;
-	hello.path = "hello.txt";
-	hello.data = "Hello World!";
-	hello.size = strlen(hello.data);
-	read(hello);
 	// call the done function
 	done();
 	
