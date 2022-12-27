@@ -87,10 +87,8 @@ void _start(void) {
 	init();
 
 	// just print some stuff
-	scrprint("Welcome to ");
-	scrprint(NAME);
-	scrprint("\nKernel Version: ");
-	scrprint(VER);
+	scrprint("Welcome to MilkyOS!");
+	scrprint("\nKernel-Version: 1.02-dev");
 	scrprint("\n");
 	done();
 	
