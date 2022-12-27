@@ -69,6 +69,6 @@ clean:
 
 .PHONY: distclean
 distclean: clean
-	rm -f iso_root/*
+	rm -f sysroot/*
 	rm -rf limine ovmf-x64
 	rm -rf limine ovmf-x64
