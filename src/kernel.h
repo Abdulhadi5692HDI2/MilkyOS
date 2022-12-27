@@ -11,7 +11,7 @@
 	#define PS2_TEST_KEYBOARD
 */
 
-void scrprint(const char *fmt, ...);
+void scrprint(const char *fmt);
 void scrclear();
 
 #endif
