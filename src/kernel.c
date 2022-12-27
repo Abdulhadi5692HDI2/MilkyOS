@@ -92,14 +92,6 @@ void _start(void) {
 	scrprint("\nKernel Version: ");
 	scrprint(VER);
 	scrprint("\n");
-
-	// keyboard test
-	#ifdef PS2_TEST_KEYBOARD
-	for (;;) {
-		initKeyboard();
-	}
-	#endif
-	// call the done function
 	done();
 	
 }
