@@ -35,8 +35,8 @@ A **hobby** OS. :)
 * [x] Add a PS/2 Keyboard driver
 * [ ] Configure a timer such as the Local APIC timer, the PIT, or the HPET.
 * [ ] Implement a scheduler to schedule threads in order make multitasking possible.
-* [x] Design a virtual file system (VFS) and implement it.
-* [x] Implement a simple virtual file system like a memory-only tmpfs to avoid crippling the design of your VFS too much while implementing it alongside real storage filesystems.
+* [x] Design a virtual file system (VFS) and implement it. (completed 26/12/2022)
+* [x] Implement a simple virtual file system like a memory-only tmpfs to avoid crippling the design of your VFS too much while implementing it alongside real storage filesystems. (completed 26/12/2022)
 * [ ] Decide how to abstract devices. UNIX likes usually go for a `/dev` virtual filesystem containing device nodes and use `ioctl()` alongside standard FS calls to do operations on them.
 
 * [ ] Get a userland going by loading executables from your VFS and running them in ring 3. Set up a way to perform system calls.
