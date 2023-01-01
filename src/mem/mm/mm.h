@@ -20,9 +20,9 @@ static dynamic_mem_node_t *dynamic_mem_start;
 
 void init_dynamic_mem();
 
-void *m_malloc(size_t size);
+void *malloc(size_t size);
 
-void m_free(void *p);
+void free(void *p);
 
 void *merge_next_node_into_current(dynamic_mem_node_t *current_mem_node);
 void *merge_current_node_into_previous(dynamic_mem_node_t *current_mem_node);

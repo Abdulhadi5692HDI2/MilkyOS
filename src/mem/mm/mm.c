@@ -27,7 +27,7 @@ void *find_best_mem_block(dynamic_mem_node_t *dynamic_mem, size_t size) {
     return best_mem_block;
 }
 
-void *m_malloc(size_t size) {
+void *malloc(size_t size) {
     dynamic_mem_node_t *best_mem_block = (dynamic_mem_node_t *) find_best_mem_block(dynamic_mem_start, size);
     if (best_mem_block != NULL_POINTER) {
         best_mem_block->size = best_mem_block->size = size - size - DYNAMIC_MEM_NODE_SIZE;
@@ -49,7 +49,7 @@ void *m_malloc(size_t size) {
     return NULL_POINTER;
 }
 
-void m_free(void *p) {
+void free(void *p) {
     if (p == NULL_POINTER) {
         return;
     }

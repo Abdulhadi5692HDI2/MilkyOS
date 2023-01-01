@@ -12,6 +12,7 @@
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
 #include "vfs/vfs.h"
+#include "syscalls/syscalls.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -47,8 +48,8 @@ void scrprint(const char *fmt) {
 
 // a clean screen function
 void scrclear() {
-	scrprint("\033[2J");
-	scrprint("\n");
+	struct limine_terminal *terminal = terminal_request.response->terminals[0];
+	terminal_request.response->write(terminal, "", ((uint64_t)(-4)));
 }
 
 // cursor functions
@@ -71,13 +72,15 @@ void init() {
 	scrprint("[ OK ] IDT Loaded!\n");
 	init_dynamic_mem();
 	scrprint("[ OK ] Initialized Dynamic Memory Management\n");
-	scrprint("test: ");
+	scrprint("test:");
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
-	scrprint("keyboard: ");
-	kernelInitKeyboard();
+	scrprint("keyboard:");
+	kernelInitKeyboard(); // the keyboard driver. (currently supports PS/2 keyboards)
 	scrprint("[ OK ] Loaded drivers!\n");
 	init_vfs();
 	scrprint("\n[ OK ] Initalized a virtual file system!\n");
+	newtmp();
+	scrprint("[ OK ] Mounted folder /tmp!\n");
 	
 }
 
@@ -85,11 +88,11 @@ void init() {
 void _start(void) {
 	// call the init function
 	init();
-
 	// just print some stuff
 	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel-Version: 1.02-dev");
+	scrprint("\nKernel Version: 1.03-dev");
 	scrprint("\n");
+	printf("Hello World!");
 	done();
 	
 }
