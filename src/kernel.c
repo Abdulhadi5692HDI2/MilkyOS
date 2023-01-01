@@ -52,13 +52,6 @@ void scrclear() {
 	terminal_request.response->write(terminal, "", ((uint64_t)(-4)));
 }
 
-// cursor functions
-void cursor_forward() {
-	scrprint(" ");
-}
-void cursor_backward() {
-	scrprint("\b");
-}
 
 // initalize function
 void init() {
@@ -90,7 +83,7 @@ void _start(void) {
 	init();
 	// just print some stuff
 	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel Version: 1.03-dev");
+	scrprint("\nKernel Version: 1.04-dev");
 	scrprint("\n");
 	printf("Hello World!");
 	done();
