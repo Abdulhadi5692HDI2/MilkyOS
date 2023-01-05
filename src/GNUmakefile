@@ -77,9 +77,12 @@ override NASMFILES := $(shell find . -type f -name '*.asm')
 override OBJ := $(CFILES:.c=.o) $(ASFILES:.S=.o) $(NASMFILES:.asm=.o)
 override HEADER_DEPS := $(CFILES:.c=.d) $(ASFILES:.S=.d)
 
+.PHONY: mkinitrd
+	./build_tools.sh
+	./build_initrd.sh
 # Default target.
 .PHONY: all
-all: $(KERNEL)
+all: mkinitrd $(KERNEL)
 
 boot/limine.h:
 	curl https://raw.githubusercontent.com/limine-bootloader/limine/trunk/limine.h -o $@
