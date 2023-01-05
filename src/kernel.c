@@ -12,7 +12,6 @@
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
 #include "vfs/vfs.h"
-#include "syscalls/syscalls.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -85,7 +84,8 @@ void _start(void) {
 	scrprint("Welcome to MilkyOS!");
 	scrprint("\nKernel Version: 1.04-dev");
 	scrprint("\n");
-	printf("Hello World!");
+
+	// kernel is probally done now
 	done();
 	
 }
