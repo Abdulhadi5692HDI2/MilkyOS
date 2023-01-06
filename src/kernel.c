@@ -6,12 +6,11 @@
 #include "boot/limine.h"
 #include "misc/misc.h"
 #include "idt/idt.h"
-#include "mem/paging/paging.h"
 #include "mem/mm/mm.h"
 #include "panic.h"
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
-#include "vfs/vfs.h"
+#include "vfs/fs.h"
 
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
@@ -45,6 +44,46 @@ void scrprint(const char *fmt) {
 	}
 }
 
+// a print (for hex) function
+void scrprint_hex(uint32_t n) {
+	int tmp;
+
+    scrprint("0x");
+
+    char noZeroes = 1;
+
+    int i;
+    for (i = 28; i > 0; i -= 4)
+    {
+        tmp = (n >> i) & 0xF;
+        if (tmp == 0 && noZeroes != 0)
+        {
+            continue;
+        }
+    
+        if (tmp >= 0xA)
+        {
+            noZeroes = 0;
+            scrprint (tmp-0xA+'a' );
+        }
+        else
+        {
+            noZeroes = 0;
+            scrprint( tmp+'0' );
+        }
+    }
+  
+    tmp = n & 0xF;
+    if (tmp >= 0xA)
+    {
+        scrprint (tmp-0xA+'a');
+    }
+    else
+    {
+        scrprint (tmp+'0');
+    }
+}
+
 // a clean screen function
 void scrclear() {
 	struct limine_terminal *terminal = terminal_request.response->terminals[0];
@@ -69,10 +108,6 @@ void init() {
 	scrprint("keyboard:");
 	kernelInitKeyboard(); // the keyboard driver. (currently supports PS/2 keyboards)
 	scrprint("[ OK ] Loaded drivers!\n");
-	init_vfs();
-	scrprint("\n[ OK ] Initalized a virtual file system!\n");
-	newtmp();
-	scrprint("[ OK ] Mounted folder /tmp!\n");
 	
 }
 
@@ -84,7 +119,6 @@ void _start(void) {
 	scrprint("Welcome to MilkyOS!");
 	scrprint("\nKernel Version: 1.04-dev");
 	scrprint("\n");
-
 	// kernel is probally done now
 	done();
 	
