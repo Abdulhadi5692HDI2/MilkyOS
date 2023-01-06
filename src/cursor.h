@@ -1,7 +1,7 @@
 #ifndef _CURSOR_H
 #define _CURSOR_H
 #include "drivers/IO/osio.h"
-#include "kernel.h"
+#include "tty.h"
 
 // cursor functions
 void cursor_forward() {

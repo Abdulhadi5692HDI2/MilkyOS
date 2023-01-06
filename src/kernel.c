@@ -11,15 +11,8 @@
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
 #include "vfs/fs.h"
+#include "tty.h"
 
-// The Limine requests can be placed anywhere, but it is important that
-// the compiler does not optimise them away, so, usually, they should
-// be made volatile or equivalent.
-
-static volatile struct limine_terminal_request terminal_request = {
-    .id = LIMINE_TERMINAL_REQUEST,
-    .revision = 0
-};
 
 // kernel done function
 static void done(void) {
@@ -27,69 +20,6 @@ static void done(void) {
         __asm__("hlt");
     }
 }
-
-// a print function
-void scrprint(const char *fmt) {
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	if (fmt == '\n') {
-		terminal->rows++;
-		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
-		terminal->columns = 0;
-	} else {
-		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
-	}
-	if (terminal->rows == SCREEN_WIDTH) {
-		terminal->rows - 1;
-		terminal->columns = 0;
-	}
-}
-
-// a print (for hex) function
-void scrprint_hex(uint32_t n) {
-	int tmp;
-
-    scrprint("0x");
-
-    char noZeroes = 1;
-
-    int i;
-    for (i = 28; i > 0; i -= 4)
-    {
-        tmp = (n >> i) & 0xF;
-        if (tmp == 0 && noZeroes != 0)
-        {
-            continue;
-        }
-    
-        if (tmp >= 0xA)
-        {
-            noZeroes = 0;
-            scrprint (tmp-0xA+'a' );
-        }
-        else
-        {
-            noZeroes = 0;
-            scrprint( tmp+'0' );
-        }
-    }
-  
-    tmp = n & 0xF;
-    if (tmp >= 0xA)
-    {
-        scrprint (tmp-0xA+'a');
-    }
-    else
-    {
-        scrprint (tmp+'0');
-    }
-}
-
-// a clean screen function
-void scrclear() {
-	struct limine_terminal *terminal = terminal_request.response->terminals[0];
-	terminal_request.response->write(terminal, "", ((uint64_t)(-4)));
-}
-
 
 // initalize function
 void init() {

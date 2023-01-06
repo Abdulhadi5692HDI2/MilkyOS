@@ -1,4 +1,5 @@
-#include "kernel.h"
+#include "tty.h"
+#include "panic.h"
 
 void panic(const char* error, const char* process) {
     scrprint("\n");
