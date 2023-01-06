@@ -34,7 +34,7 @@ src:
 
 milkyos.iso: limine src
 	cp src/mkernel.sys \
-		config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin initrd.img  sysroot/
+		config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin sysroot/
 	xorriso -as mkisofs -b limine-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot limine-cd-efi.bin \
