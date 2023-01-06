@@ -21,10 +21,6 @@ void scrprint(const char *fmt) {
 	} else {
 		terminal_request.response->write(terminal, fmt, strlen(fmt)); // libc-less strlen implementation in strlen.c
 	}
-	if (terminal->rows == SCREEN_WIDTH) {
-		terminal->rows - 1;
-		terminal->columns = 0;
-	}
 }
 
 

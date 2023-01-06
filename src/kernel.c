@@ -1,16 +1,15 @@
 #include <stdint.h>
 #include <stddef.h>
+#include "misc/misc.h"
 #include "kernel.h"
 #include "drivers/test/test.h"
 #include "drivers/IO/osio.h"
 #include "boot/limine.h"
-#include "misc/misc.h"
 #include "idt/idt.h"
 #include "mem/mm/mm.h"
 #include "panic.h"
 #include "hardware/pic.h"
 #include "drivers/keyboard/keyboard.h"
-#include "vfs/fs.h"
 #include "tty.h"
 
 
@@ -23,11 +22,6 @@ static void done(void) {
 
 // initalize function
 void init() {
-	// Ensure we got a terminal
-    if (terminal_request.response == NULL
-     || terminal_request.response->terminal_count < 1) {
-        done();
-	}
 	scrprint("[ OK ] Loaded string functions from misc.h!\n");
 	idt_init();
 	scrprint("[ OK ] IDT Loaded!\n");
