@@ -44,7 +44,11 @@ void _start(void) {
 	scrprint("Welcome to MilkyOS!");
 	scrprint("\nKernel Version: 1.04-dev");
 	scrprint("\n");
-
+	int num = 256;
+	char dnum[5];
+	itoa(num, dnum, 10);
+	scrprint("Integer Num: ");
+	scrprint(dnum);
 	// kernel is probally done now
 	done();
 	
