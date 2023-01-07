@@ -8,7 +8,8 @@
 #include "idt/idt.h"
 #include "mem/mm/mm.h"
 #include "panic.h"
-#include "hardware/pic.h"
+#include "hardware/pic/pic.h"
+#include "hardware/pit/pit.h"
 #include "drivers/keyboard/keyboard.h"
 #include "tty.h"
 
@@ -43,6 +44,7 @@ void _start(void) {
 	scrprint("Welcome to MilkyOS!");
 	scrprint("\nKernel Version: 1.04-dev");
 	scrprint("\n");
+
 	// kernel is probally done now
 	done();
 	

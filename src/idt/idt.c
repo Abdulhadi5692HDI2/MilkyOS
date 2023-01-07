@@ -2,7 +2,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include "../drivers/IO/osio.h"
-#include "../hardware/pic.h"
+#include "../hardware/pic/pic.h"
 #include "../panic.h"
 #include "idt.h"
 
