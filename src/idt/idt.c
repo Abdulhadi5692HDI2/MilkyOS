@@ -13,20 +13,8 @@ void exception_handler() {
 	__asm__ volatile ("cli; hlt");
 }
 
-void idt_set_descriptor(uint8_t vector, void* isr, uint8_t flags);
-void idt_set_descriptor(uint8_t vector, void* isr, uint8_t flags) {
-	idt_entry_t* descriptor = &idt[vector];
-	
-	descriptor->isr_low		= (uint32_t)isr & 0xFFFF;
-	descriptor->kernel_cs	= 0x08;
-	descriptor->attributes	= flags;
-	descriptor->isr_high	= (uint32_t)isr >> 16;
-	descriptor->reserved	= 0;
-}
-void irq_handler() {
-    outb(0x20, 0x20);
-}
 extern void* isr_stub_table[];
+extern void* irq0;
 extern void* irq1;
 extern void* irq2;
 extern void* irq3;
@@ -42,6 +30,20 @@ extern void* irq12;
 extern void* irq13;
 extern void* irq14;
 extern void* irq15;
+
+void idt_set_descriptor(uint8_t vector, void* isr, uint8_t flags);
+void idt_set_descriptor(uint8_t vector, void* isr, uint8_t flags) {
+	idt_entry_t* descriptor = &idt[vector];
+	
+	descriptor->isr_low		= (uint32_t)isr & 0xFFFF;
+	descriptor->kernel_cs	= 0x08;
+	descriptor->attributes	= flags;
+	descriptor->isr_high	= (uint32_t)isr >> 16;
+	descriptor->reserved	= 0;
+}
+void irq_handler() {
+    outb(0x20, 0x20);
+}
 
 void idt_init(void);
 void idt_init() {

@@ -1,3 +1,4 @@
+
 ; compile with NASM
 extern exception_handler
 %macro isr_err_stub 1
@@ -53,6 +54,7 @@ isr_stub_table:
 %assign i i+1 
 %endrep
 
+global irq0
 global irq1
 global irq2
 global irq3
