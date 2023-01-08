@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
-#include "misc.h"
+#include "libc.h"
 
 size_t strlen(const char * __s) {
     size_t len = 0;

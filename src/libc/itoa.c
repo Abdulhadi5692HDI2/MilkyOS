@@ -1,5 +1,4 @@
-#include "misc.h"
-#include <string.h>
+#include "libc.h"
 #include <stdint.h>
 
 char* itoa(int value, char* result, int base) {

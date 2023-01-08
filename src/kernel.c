@@ -1,6 +1,6 @@
 #include <stdint.h>
 #include <stddef.h>
-#include "misc/misc.h"
+#include "libc/libc.h"
 #include "kernel.h"
 #include "drivers/test/test.h"
 #include "drivers/IO/osio.h"

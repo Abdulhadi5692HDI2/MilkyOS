@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include "boot/limine.h"
-#include "misc/misc.h"
+#include "libc/string.h"
 // The Limine requests can be placed anywhere, but it is important that
 // the compiler does not optimise them away, so, usually, they should
 // be made volatile or equivalent.

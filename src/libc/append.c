@@ -1,4 +1,4 @@
-#include "misc.h"
+#include "libc.h"
 void append(char s[], char n) {
     int len = strlen(s);
     s[len] = n;
