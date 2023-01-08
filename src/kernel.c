@@ -7,11 +7,13 @@
 #include "boot/limine.h"
 #include "idt/idt.h"
 #include "mem/mm/mm.h"
+#include "mem/kheap/kheap.h"
 #include "panic.h"
 #include "hardware/pic/pic.h"
 #include "hardware/pit/pit.h"
 #include "drivers/keyboard/keyboard.h"
 #include "tty.h"
+#include "bootinfo.h"
 
 
 // kernel done function
@@ -23,7 +25,6 @@ static void done(void) {
 
 // initalize function
 void init() {
-	scrprint("[ OK ] Loaded string functions from misc.h!\n");
 	idt_init();
 	scrprint("[ OK ] IDT Loaded!\n");
 	init_dynamic_mem();
@@ -42,13 +43,9 @@ void _start(void) {
 	init();
 	// just print some stuff
 	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel Version: 1.04-dev");
+	scrprint("\nKernel Version: 1.05-dev");
 	scrprint("\n");
-	int num = 256;
-	char dnum[5];
-	itoa(num, dnum, 10);
-	scrprint("Integer Num: ");
-	scrprint(dnum);
+	printinfo();
 	// kernel is probally done now
 	done();
 	
