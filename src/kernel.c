@@ -46,6 +46,7 @@ void _start(void) {
 	scrprint("\nKernel Version: 1.05-dev");
 	scrprint("\n");
 	printinfo();
+	scrprint("\n");
 	// kernel is probally done now
 	done();
 	

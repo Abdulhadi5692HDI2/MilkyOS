@@ -1,7 +1,7 @@
 #include "pit.h"
 #include "../../drivers/IO/osio.h"
 #include "../../tty.h"
-#include "../../misc/misc.h"
+#include "../../libc/libc.h"
 
 int tick = 0;
 char dtick;
