@@ -6,6 +6,12 @@ A **hobby** OS. :)
 64-bit only.
 
 
+## Screenshots
+<img src="https://github.com/Abdulhadi5692HDI2/MilkyOS/raw/trunk/SCREENSHOT.PNG" />
+MilkyOS running in QEMU.
+
+
+
 ## You probally should have
 * Everything that the BuildDepMilkyOS script installs.
 
