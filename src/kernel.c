@@ -14,15 +14,21 @@
 #include "drivers/keyboard/keyboard.h"
 #include "tty.h"
 #include "bootinfo.h"
+#include "vfs/tmpfs/tmpfs.h"
 
-
+char* currentfs = "tmpfs";
 // kernel done function
 static void done(void) {
     for (;;) {
         __asm__("hlt");
     }
 }
-
+void init_root() {
+	struct folder root;
+	root.path = OS_ROOT;
+	root.ismount = true;
+	changedir(root);
+}
 // initalize function
 void init() {
 	idt_init();
@@ -34,6 +40,11 @@ void init() {
 	scrprint("keyboard:");
 	kernelInitKeyboard(); // the keyboard driver. (currently supports PS/2 keyboards)
 	scrprint("[ OK ] Loaded drivers!\n");
+	scrprint("fs: Using filesystem ");
+	scrprint(currentfs);
+	init_root();
+	scrprint("\n");
+	scrprint("\n");
 	
 }
 
@@ -47,6 +58,7 @@ void _start(void) {
 	scrprint("\n");
 	printinfo();
 	scrprint("\n");
+	scrprint ("\n");
 	// kernel is probally done now
 	done();
 	
