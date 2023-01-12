@@ -32,18 +32,12 @@ void init_root() {
 // initalize function
 void init() {
 	idt_init();
-	scrprint("[ OK ] IDT Loaded!\n");
 	init_dynamic_mem();
-	scrprint("[ OK ] Initialized Dynamic Memory Management\n");
-	scrprint("test:");
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
-	scrprint("keyboard:");
-	kernelInitKeyboard(); // the keyboard driver. (currently supports PS/2 keyboards)
-	scrprint("[ OK ] Loaded drivers!\n");
 	scrprint("fs: Using filesystem ");
 	scrprint(currentfs);
-	init_root();
 	scrprint("\n");
+	init_root();
 	scrprint("\n");
 	
 }
@@ -54,11 +48,12 @@ void _start(void) {
 	init();
 	// just print some stuff
 	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel Version: 1.05-dev");
+	scrprint("\nKernel Version: 1.06-dev");
 	scrprint("\n");
-	printinfo();
-	scrprint("\n");
-	scrprint ("\n");
+
+	for(;;) {keyboardCallback();}
+
+	scrprint(">");
 	// kernel is probally done now
 	done();
 	

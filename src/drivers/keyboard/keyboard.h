@@ -4,9 +4,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
+#include <stdbool.h>
 
-void chkscancode(uint8_t scancode1);
 void keyboardCallback();
-void kernelInitKeyboard();
-void initKeyboard();
 #endif
