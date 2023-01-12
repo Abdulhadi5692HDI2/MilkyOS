@@ -11,6 +11,11 @@ A **hobby** OS. :)
 MilkyOS running in QEMU.
 
 
+<img src="https://github.com/Abdulhadi5692HDI2/MilkyOS/raw/trunk/SCREENSHOT2.PNG" />
+MilkyOS with some typed input in QEMU
+
+
+
 
 ## You probally should have
 * Everything that the BuildDepMilkyOS script installs.
