@@ -15,7 +15,8 @@ MilkyOS running in QEMU.
 MilkyOS with some typed input in QEMU
 
 
-
+<img src="https://github.com/Abdulhadi5692HDI2/MilkyOS/raw/trunk/SCREENSHOT3.PNG" />
+MilkyOS displaying the contents of ```hello.txt``` that was created by the kernel code.
 
 ## You probally should have
 * Everything that the BuildDepMilkyOS script installs.
