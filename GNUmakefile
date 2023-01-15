@@ -33,11 +33,12 @@ src:
 	$(MAKE) -C src
 
 milkyos.iso: limine src
-	cp src/mkernel.sys \
-		img/background.bmp config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin sysroot/
-	xorriso -as mkisofs -b limine-cd.bin \
+	cp \
+		img/background.bmp config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin sysroot/boot/
+	cp src/mkernel.sys sysroot/sys/mkernel.sys
+	xorriso -as mkisofs -b boot/limine-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
-		--efi-boot limine-cd-efi.bin \
+		--efi-boot boot/limine-cd-efi.bin \
 		-efi-boot-part --efi-boot-image --protective-msdos-label \
 		sysroot -o milkyos.iso
 	limine/limine-deploy milkyos.iso
@@ -69,6 +70,6 @@ clean:
 
 .PHONY: distclean
 distclean: clean
-	rm -f sysroot/*.sys sysroot/*.cfg sysroot/*.bin
+	rm -f sysroot/boot/*.sys sysroot/boot/*.cfg sysroot/boot/*.bin
 	rm -rf limine ovmf-x64
 	rm -rf limine ovmf-x64

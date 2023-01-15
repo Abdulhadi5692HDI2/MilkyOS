@@ -48,12 +48,8 @@ void _start(void) {
 	init();
 	// just print some stuff
 	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel Version: 1.06-dev");
+	scrprint("\nKernel Version: 1.07-dev");
 	scrprint("\n");
-
-	for(;;) {keyboardCallback();}
-
-	scrprint(">");
 	// kernel is probally done now
 	done();
 	
