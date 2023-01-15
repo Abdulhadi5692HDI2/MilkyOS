@@ -107,4 +107,4 @@ $(KERNEL): $(OBJ)
 # Remove object files and the final executable.
 .PHONY: clean
 clean:
-	rm -rf $(KERNEL) $(OBJ) $(HEADER_DEPS)
+	rm -rf sysroot/sys/$(KERNEL) src/$(KERNEL) $(OBJ) $(HEADER_DEPS)
