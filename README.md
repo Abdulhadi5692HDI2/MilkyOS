@@ -1,6 +1,6 @@
 # MilkyOS
 ![GitHub last commit](https://img.shields.io/github/last-commit/Abdulhadi5692HDI2/MilkyOS)
-**NOTE: MilkyOS can be compiled with a regular system compiler. (well by changing the Makefile). You should use an x86-elf cross compiler though.**
+**NOTE: MilkyOS can be compiled with a regular system compiler. (well by deleting src/GNUmakefile and rename src/GNUmakefile.rgcc to src/GNUmakefile). You should use an x86-elf cross compiler though.**
 
 A **hobby** OS. :)
 64-bit only.
