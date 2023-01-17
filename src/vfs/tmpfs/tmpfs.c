@@ -3,8 +3,8 @@
 #include "../../tty.h"
 
 void changedir(struct folder f) {
-	scrprint("Current directory is: ");
-	scrprint(f.path);
+	printf("Current directory is: ");
+	printf(f.path);
 } 
 void frename(struct file f, const char* newpath) {
 	f.path = newpath;

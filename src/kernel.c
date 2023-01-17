@@ -12,7 +12,6 @@
 #include "hardware/pic/pic.h"
 #include "hardware/pit/pit.h"
 #include "drivers/keyboard/keyboard.h"
-#include "tty.h"
 #include "bootinfo.h"
 #include "vfs/tmpfs/tmpfs.h"
 
@@ -34,11 +33,11 @@ void init() {
 	idt_init();
 	init_dynamic_mem();
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
-	scrprint("fs: Using filesystem ");
-	scrprint(currentfs);
-	scrprint("\n");
+	printf("fs: Using filesystem ");
+	printf(currentfs);
+	printf("\n");
 	init_root();
-	scrprint("\n");
+	printf("\n");
 	
 }
 
@@ -47,9 +46,9 @@ void _start(void) {
 	// call the init function
 	init();
 	// just print some stuff
-	scrprint("Welcome to MilkyOS!");
-	scrprint("\nKernel Version: 1.07-dev");
-	scrprint("\n");
+	printf("Welcome to MilkyOS!");
+	printf("\nKernel Version: 1.08-dev");
+	printf("\n");
 	// kernel is probally done now
 	done();
 	

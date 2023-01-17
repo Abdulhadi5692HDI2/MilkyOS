@@ -70,6 +70,6 @@ clean:
 
 .PHONY: distclean
 distclean: clean
-	rm -f sysroot/boot/*.sys sysroot/boot/*.cfg sysroot/boot/*.bin
+	rm -f src/*.sys sysroot/boot/*.sys sysroot/boot/*.cfg sysroot/boot/*.bin
 	rm -rf limine ovmf-x64
 	rm -rf limine ovmf-x64

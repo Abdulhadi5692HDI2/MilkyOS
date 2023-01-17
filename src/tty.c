@@ -12,7 +12,7 @@ static volatile struct limine_terminal_request terminal_request = {
 };
 
 
-// a print function
+// a print function for libc/printf.c
 void scrprint(const char *fmt) {
 	struct limine_terminal *terminal = terminal_request.response->terminals[0];
 	if (fmt == '\n') {

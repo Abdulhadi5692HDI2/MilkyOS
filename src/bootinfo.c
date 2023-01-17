@@ -1,5 +1,5 @@
 #include "boot/limine.h"
-#include "tty.h"
+#include "libc/libc.h"
 #include <stdint.h>
 #include "bootinfo.h"
 #include <stddef.h>
