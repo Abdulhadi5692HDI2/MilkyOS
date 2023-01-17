@@ -19,7 +19,9 @@ MilkyOS with some typed input in QEMU
 MilkyOS displaying the contents of ```hello.txt``` that was created by the kernel code.
 
 ## You probally should have
-* Everything that the BuildDepMilkyOS script installs.
+* x86-elf cross compiler (gcc, binutils)
+* 64-bit nasm
+* GDB (generic)
 
 
 ## Compile instructions
