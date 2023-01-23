@@ -27,16 +27,9 @@ void init_root() {
 // initalize function
 void init() {
 	gdt_init();
-	/*
-	idt_init();
 	init_dynamic_mem();
 	testInit(); // the test driver. (smallest driver possible in MilkyOS)
-	printf("fs: Using filesystem ");
-	printf(currentfs);
-	printf("\n");
-	init_root();
-	printf("\n");
-	*/	
+	init_root();	
 }
 
 // Main Kernel
@@ -44,8 +37,8 @@ void _start(void) {
 	// call the init function
 	init();
 	// just print some stuff
-	printf("Welcome to MilkyOS!");
-	printf("\nKernel Version: 1.08-dev");
+	printf("\nWelcome to MilkyOS!");
+	printf("\nKernel Version: 1.09-dev");
 	printf("\n");
 	// kernel is probally done now
 	done();

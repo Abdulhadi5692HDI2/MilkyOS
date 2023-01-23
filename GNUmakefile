@@ -36,6 +36,7 @@ milkyos.iso: limine src
 	cp \
 		img/background.bmp config/limine.cfg limine/limine.sys limine/limine-cd.bin limine/limine-cd-efi.bin sysroot/boot/
 	cp src/mkernel.sys sysroot/sys/mkernel.sys
+	cp fonts/unifont.bin sysroot/sys/unifont.bin
 	xorriso -as mkisofs -b boot/limine-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot boot/limine-cd-efi.bin \
