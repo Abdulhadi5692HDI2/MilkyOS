@@ -1,5 +1,6 @@
 # TODO LIST
 
+* (x: done on 25th June 2023 20:22 PM) Load an [GDT](https://wiki.osdev.org/GDT).
 * Load an [IDT](https://wiki.osdev.org/Interrupt_Descriptor_Table) so that exceptions and interrupts can be handled.
 * Write a physical memory allocator, a good starting point is a bitmap allocator.
 * Write a virtual memory manager that can map, remap and unmap pages.
