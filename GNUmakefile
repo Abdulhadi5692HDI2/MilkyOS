@@ -1,7 +1,7 @@
 # Nuke built-in rules and variables.
 override MAKEFLAGS += -rR
 
-override IMAGE_NAME := barebones
+override IMAGE_NAME := milkyos
 
 .PHONY: all
 all: $(IMAGE_NAME).iso
@@ -38,19 +38,19 @@ kernel:
 	$(MAKE) -C kernel
 
 $(IMAGE_NAME).iso: limine kernel
-	rm -rf iso_root
-	mkdir -p iso_root
+	rm -rf cd_root
+	mkdir -p cd_root
 	cp kernel/kernel.elf \
-		limine.cfg limine/limine-bios.sys limine/limine-bios-cd.bin limine/limine-uefi-cd.bin iso_root/
-	mkdir -p iso_root/EFI/BOOT
-	cp limine/BOOT*.EFI iso_root/EFI/BOOT/
+		config/limine.cfg limine/limine-bios.sys limine/limine-bios-cd.bin limine/limine-uefi-cd.bin cd_root/
+	mkdir -p cd_root/EFI/BOOT
+	cp limine/BOOT*.EFI cd_root/EFI/BOOT/
 	xorriso -as mkisofs -b limine-bios-cd.bin \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		--efi-boot limine-uefi-cd.bin \
 		-efi-boot-part --efi-boot-image --protective-msdos-label \
-		iso_root -o $(IMAGE_NAME).iso
+		cd_root -o $(IMAGE_NAME).iso
 	./limine/limine bios-install $(IMAGE_NAME).iso
-	rm -rf iso_root
+	rm -rf cd_root
 
 $(IMAGE_NAME).hdd: limine kernel
 	rm -f $(IMAGE_NAME).hdd
@@ -64,7 +64,7 @@ $(IMAGE_NAME).hdd: limine kernel
 	mkdir -p img_mount
 	sudo mount `cat loopback_dev`p1 img_mount
 	sudo mkdir -p img_mount/EFI/BOOT
-	sudo cp -v kernel/kernel.elf limine.cfg limine/limine-bios.sys img_mount/
+	sudo cp -v kernel/kernel.elf config/limine.cfg limine/limine-bios.sys img_mount/
 	sudo cp -v limine/BOOT*.EFI img_mount/EFI/BOOT/
 	sync
 	sudo umount img_mount
@@ -73,7 +73,7 @@ $(IMAGE_NAME).hdd: limine kernel
 
 .PHONY: clean
 clean:
-	rm -rf iso_root $(IMAGE_NAME).iso $(IMAGE_NAME).hdd
+	rm -rf cd_root $(IMAGE_NAME).iso $(IMAGE_NAME).hdd
 	$(MAKE) -C kernel clean
 
 .PHONY: distclean
