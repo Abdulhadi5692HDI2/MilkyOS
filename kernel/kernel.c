@@ -4,6 +4,8 @@
 #include <limine.h>
 #include <memfunc.h>
 #include <cpu/gdt/gdt.h>
+#include <mem/pmem/pmem.h>
+
 
 static volatile struct limine_framebuffer_request framebuffer_request = {
     .id = LIMINE_FRAMEBUFFER_REQUEST,
@@ -41,6 +43,9 @@ void _start(void) {
         uint32_t *fb_ptr = framebuffer->address;
         fb_ptr[i * (framebuffer->pitch / 4) + i] = 0x2cfa02;
     }
+    size_t addres = malloc(16);
+    /* .. add stuff here .. */
+    free(addres);
 
     // We're done, just hang...
     hcf();
