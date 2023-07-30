@@ -36,13 +36,7 @@ static void init() {
 void _start(void) {
     init();
 
-    // Fetch the first framebuffer.
-    struct limine_framebuffer *framebuffer = framebuffer_request.response->framebuffers[0];
-
-    for (size_t i = 0; i < 100; i++) {
-        uint32_t *fb_ptr = framebuffer->address;
-        fb_ptr[i * (framebuffer->pitch / 4) + i] = 0x2cfa02;
-    }
+    
     // We're done, just hang...
     hcf();
 }
